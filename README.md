@@ -1,4 +1,4 @@
-ci 1
+ci 1 2
 CI build
 
 # deep-space
