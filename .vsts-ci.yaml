@@ -1,5 +1,5 @@
 queue:
-  name: yacao
+  name: yacao-wrong
   demands: maven
 
 
