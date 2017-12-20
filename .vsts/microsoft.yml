@@ -1,0 +1,9 @@
+queue:
+  name: Default
+  demands: maven
+
+
+steps:
+- task: Maven@1
+  inputs:
+    goals: "clean test"
