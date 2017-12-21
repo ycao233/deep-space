@@ -1,0 +1,8 @@
+queue:
+  name: Hosted Linux Preview
+  demands: maven
+
+steps:
+- task: Maven@1
+  inputs:
+    goals: "clean test"
