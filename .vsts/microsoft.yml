@@ -1,7 +1,6 @@
 queue:
-  name: Hosted macOS Preview
+  name: Hosted Linux Preview
   demands: maven
-
 
 steps:
 - task: Maven@1
