@@ -1,5 +1,5 @@
 queue:
-  name: Default
+  name: Hosted Linux Preview
   demands: maven
 
 
