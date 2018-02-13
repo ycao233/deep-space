@@ -6,4 +6,4 @@ queue:
 steps:
 - task: Maven@1
   inputs:
-    goals: "clean package"
+    goals: "clean test"
