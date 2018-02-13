@@ -1,5 +1,5 @@
 queue:
-  name: empty
+  name: Default
   demands: maven
 
 
