@@ -17,5 +17,4 @@ steps:
 - powershell: |
    # Write your powershell commands here.  
    Write-Host $(mysecret)
-   displayName: PowerShell Script
 
