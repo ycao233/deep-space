@@ -7,7 +7,7 @@ queue: 'Default'
 
 steps:
 - script: |   
-    echo ##vso[build.updatebuildnumber]yacao-1.0.0
+    echo '##vso[build.updatebuildnumber]yacao-1.0.0'
     displayName: 'Command Line Script'
   
 - task: Maven@3
