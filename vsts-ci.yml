@@ -7,7 +7,7 @@ queue: 'Default'
 # echo ##vso[build.updatebuildnumber]yacao-1.0.0
 steps:
 - script: |    
-    echo 'test'
+    echo $(MySecret)
 
 - task: Maven@3
   inputs:
