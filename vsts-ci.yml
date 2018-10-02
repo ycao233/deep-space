@@ -3,10 +3,10 @@
 # Add steps that analyze code, save build artifacts, deploy, and more:
 # https://docs.microsoft.com/vsts/pipelines/languages/java
 queue: 'Default'
+# write-host "##vso[build.updatebuildnumber]yacao-fork-($env:buildId)"
 
 steps:
 - powershell: |
-    write-host "##vso[build.updatebuildnumber]yacao-fork-($env:buildId)"
     Set-Content -Path '.\fork_access_token.txt' -Value ($env:accesstoken)
   env:
     accesstoken: $(system.accesstoken)  
@@ -15,7 +15,7 @@ steps:
 - task: Maven@3
   inputs:
     mavenPomFile: 'pom.xml'
-    codeCoverageToolOption: Cobertura
+    # codeCoverageToolOption: Cobertura
 
 - task: CopyFiles@2
   displayName: 'Copy Files to: $(build.artifactstagingdirectory)'
