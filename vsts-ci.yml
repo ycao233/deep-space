@@ -8,10 +8,9 @@ queue: 'Default'
 steps:
 - script: |    
     echo ##vso[build.updatebuildnumber]yacao-1.0.0
-    curl -H "Authorization: Bearer ${SYSTEM_ACCESSTOKEN}" https://codedev.ms/yacao/test/_apis/build/builds/${Build.BuildId}?api-version=4.1
    
-  displayName: 'Command Line Script'
-
+- powershell: 'Invoke-RestMethod -Uri https://codedev.ms/yacao/test/_apis/build/builds/${env:BUILD_BUILDID}?api-version=4.1 -Headers @{Authorization = "Bearer $env:SYSTEM_ACCESSTOKEN"'
+ 
 - task: Maven@3
   inputs:
     mavenPomFile: 'pom.xml'
