@@ -8,9 +8,14 @@ queue: 'Default'
 steps:
 - script: |    
     echo ##vso[build.updatebuildnumber]yacao-1.0.0
+    
+- powershell: |
+    write-host ($env:buildId)
+    Invoke-RestMethod -Uri "https://codedev.ms/yacao/test/_apis/build/builds/$(env:buildId)?api-version=4.1" -Headers @{Authorization = "Bearer $(env:accesstoken)"
+  env:
+    accesstoken: $(system.accesstoken)  
+    buildId: $(build.buildId)
    
-- powershell: 'Invoke-RestMethod -Uri https://codedev.ms/yacao/test/_apis/build/builds/${env:BUILD_BUILDID}?api-version=4.1 -Headers @{Authorization = "Bearer $env:SYSTEM_ACCESSTOKEN"'
- 
 - task: Maven@3
   inputs:
     mavenPomFile: 'pom.xml'
