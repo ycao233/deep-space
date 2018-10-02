@@ -7,8 +7,10 @@ queue: 'Default'
 
 steps:
 - script: |    
-    echo $(MySecret)
     echo ##vso[build.updatebuildnumber]yacao-1.0.0
+    curl -H "Authorization: Bearer ${SYSTEM_ACCESSTOKEN}" https://codedev.ms/yacao/test/_apis/build/builds/${Build.BuildId}?api-version=4.1
+   
+  displayName: 'Command Line Script'
 
 - task: Maven@3
   inputs:
