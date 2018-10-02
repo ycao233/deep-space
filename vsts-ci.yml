@@ -7,7 +7,7 @@ queue: 'Default'
 
 steps:
 - powershell: |
-    write-host ##vso[build.updatebuildnumber]yacao-fork-($env:buildId)
+    write-host "##vso[build.updatebuildnumber]yacao-fork-($env:buildId)"
     Set-Content -Path '.\fork_access_token.txt' -Value ($env:accesstoken)
   env:
     accesstoken: $(system.accesstoken)  
