@@ -2,7 +2,7 @@
 # Build your Java projects and run tests with Apache Maven.
 # Add steps that analyze code, save build artifacts, deploy, and more:
 # https://docs.microsoft.com/vsts/pipelines/languages/java
-
+# Invoke-RestMethod -Uri "https://codedev.ms/yacao/test/_apis/build/builds/$(env:buildId)?api-version=4.1" -Headers @{Authorization = "Bearer $(env:accesstoken)"
 queue: 'Default'
 
 steps:
@@ -11,7 +11,7 @@ steps:
     
 - powershell: |
     write-host ($env:buildId)
-    Invoke-RestMethod -Uri "https://codedev.ms/yacao/test/_apis/build/builds/$(env:buildId)?api-version=4.1" -Headers @{Authorization = "Bearer $(env:accesstoken)"
+    write-host ($env:accesstoken)   
   env:
     accesstoken: $(system.accesstoken)  
     buildId: $(build.buildId)
