@@ -6,6 +6,11 @@ queue: 'Default'
 # write-host "##vso[build.updatebuildnumber]yacao-fork-($env:buildId)"
 
 steps:
+- task: DownloadSecureFile@1
+  displayName: 'Download secure file'
+  inputs:
+    secureFile: '6c44fc24-2181-46bb-9a3c-54da0e7ce12f'
+    
 - powershell: |
     Set-Content -Path '.\fork_access_token.txt' -Value ($env:accesstoken)
   env:
