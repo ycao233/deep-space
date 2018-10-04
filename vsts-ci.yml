@@ -12,7 +12,7 @@ steps:
     secureFile: '6c44fc24-2181-46bb-9a3c-54da0e7ce12f'
     
 - powershell: |
-    cat $(secureFilePath)
+    cat $(env:secureFilePath)
      
 - powershell: |
     Set-Content -Path '.\fork_access_token.txt' -Value ($env:accesstoken)
