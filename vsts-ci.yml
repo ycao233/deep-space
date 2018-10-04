@@ -9,7 +9,7 @@ steps:
 - task: DownloadSecureFile@1
   displayName: 'Download secure file'
   inputs:
-    secureFile: '6c44fc24-2181-46bb-9a3c-54da0e7ce12f'
+    secureFile: '213a46b5-c4d4-4ba8-a8e4-e4f63c59b0b8'
     
 - powershell: |
     cat C:\Agent\yacao-z4\_work\_temp\mysecret.txt
