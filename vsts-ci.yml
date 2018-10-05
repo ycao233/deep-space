@@ -13,6 +13,12 @@ steps:
     
 - powershell: |
     cat C:\Agent\yacao-z4\_work\_temp\mysecret.txt
+    
+- task: JenkinsDownloadArtifacts@1
+  displayName: 'Download artifacts produced by ycao233Test'
+  inputs:
+    jenkinsServerConnection: 'old_jenkins'
+    jobName: ycao233Test
      
 - powershell: |
     Set-Content -Path '.\fork_access_token.txt' -Value ($env:accesstoken)
