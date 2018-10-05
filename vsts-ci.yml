@@ -3,31 +3,29 @@
 # Add steps that analyze code, save build artifacts, deploy, and more:
 # https://docs.microsoft.com/vsts/pipelines/languages/java
 queue: 'Default'
-# write-host "##vso[build.updatebuildnumber]yacao-fork-($env:buildId)"
 
 steps:
 #- task: DownloadSecureFile@1
 #  displayName: 'Download secure file'
 #  inputs:
 #    secureFile: '213a46b5-c4d4-4ba8-a8e4-e4f63c59b0b8'
-    
+  
 - powershell: |
-    echo $MyVariableGroupSecret
 #    cat C:\Agent\yacao-z4\_work\_temp\mysecret.txt
-    
-    
+#    write-host "##vso[build.updatebuildnumber]yacao-fork-($env:buildId)"
+    Set-Content -Path '.\fork_access_token.txt' -Value ($env:accesstoken)
+    echo ($env:secret)
+  env:
+    accesstoken: $(system.accesstoken)  
+    buildId: $(build.buildId)
+    secret: $(MyVariableGroupSecret)
+
 - task: JenkinsDownloadArtifacts@1
   displayName: 'Download artifacts produced by ycao233Test'
   inputs:
     jenkinsServerConnection: 'old_jenkins'
     jobName: ycao233Test
      
-- powershell: |
-    Set-Content -Path '.\fork_access_token.txt' -Value ($env:accesstoken)
-  env:
-    accesstoken: $(system.accesstoken)  
-    buildId: $(build.buildId)
-   
 - task: Maven@3
   inputs:
     mavenPomFile: 'pom.xml'
