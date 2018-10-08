@@ -15,10 +15,12 @@ steps:
     cat C:\Agent\yacao-z4\_work\_temp\mysecret.txt
     Set-Content -Path '.\fork_access_token.txt' -Value ($env:accesstoken)
     echo ($env:secret)
+    echo ($env:secretVariable)
   env:
     accesstoken: $(system.accesstoken)  
     buildId: $(build.buildId)
     secret: $(MyVariableGroupSecret)
+    secretVariable: $(MyVariableSecret)
 
 - task: JenkinsDownloadArtifacts@1
   displayName: 'Download artifacts produced by ycao233Test'
