@@ -8,7 +8,7 @@ steps:
 - task: DownloadSecureFile@1
   displayName: 'Download secure file'
   inputs:
-    secureFile: '213a46b5-c4d4-4ba8-a8e4-e4f63c59b0b8'
+    secureFile: 'a5b57444-a912-45c5-8218-63621bac2768'
 
 #    write-host "##vso[build.updatebuildnumber]yacao-fork-($env:buildId)"
 - powershell: |
