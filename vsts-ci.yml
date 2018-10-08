@@ -20,11 +20,11 @@ steps:
     buildId: $(build.buildId)
     secret: $(MyVariableGroupSecret)
 
-- task: JenkinsDownloadArtifacts@1
-  displayName: 'Download artifacts produced by ycao233Test'
-  inputs:
-    jenkinsServerConnection: 'old_jenkins'
-    jobName: ycao233Test
+#- task: JenkinsDownloadArtifacts@1
+#  displayName: 'Download artifacts produced by ycao233Test'
+#  inputs:
+#    jenkinsServerConnection: 'old_jenkins'
+#    jobName: ycao233Test
      
 - task: Maven@3
   inputs:
