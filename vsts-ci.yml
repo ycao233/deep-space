@@ -4,7 +4,8 @@
 # https://docs.microsoft.com/vsts/pipelines/languages/java
 jobs:
 - job: first 
-    steps:
+  queue: "Default"
+  steps:
     - task: DownloadSecureFile@1
       displayName: 'Download secure file'
       inputs:
@@ -29,7 +30,8 @@ jobs:
         jobName: ycao233Test
 
 - job: second
-    steps:
+  queue: "Default"
+  steps:
     - task: Maven@3
       inputs:
         mavenPomFile: 'pom.xml'
