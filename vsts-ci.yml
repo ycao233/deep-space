@@ -31,7 +31,6 @@ jobs:
     #    jobName: ycao233Test
 
 - job: second
-  queue: default
   steps:
     - task: Maven@3
       inputs:
