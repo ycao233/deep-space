@@ -31,7 +31,6 @@ jobs:
     #    jobName: ycao233Test
 
 - job: second
-  pool: default
   steps:
     - task: Maven@3
       inputs:
