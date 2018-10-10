@@ -31,8 +31,7 @@ jobs:
     #    jobName: ycao233Test
 
 - job: second
-  pool:
-    vmImage: Ubuntu 16.04
+  queue: default
   steps:
     - task: Maven@3
       inputs:
