@@ -30,8 +30,7 @@ jobs:
     #    jenkinsServerConnection: 'old_jenkins'
     #    jobName: ycao233Test
 
-- job: second
-  queue: default
+- job: second 
   steps:
     - task: Maven@3
       inputs:
