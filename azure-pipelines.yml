@@ -5,14 +5,15 @@
 jobs:
 - job: first 
   steps:
-    #- task: DownloadSecureFile@1
-    #  displayName: 'Download secure file'
-    #  inputs:
-    #    secureFile: 'a5b57444-a912-45c5-8218-63621bac2768'
+    - task: DownloadSecureFile@1
+      displayName: 'Download secure file'
+      inputs:
+        secureFile: '9595d280-9704-45c1-a1f3-2d5cfe60bf8e'
 
-    # cat C:\Agent\yacao-z4\_work\_temp\mysecret.txt
+     
     #   write-host "##vso[build.updatebuildnumber]yacao-fork-($env:buildId)"  
     - powershell: |
+        cat C:\Agent\yacao-z4\_work\_temp\mysecret.txt
         write-host "##vso[build.updatebuildnumber]yacao-fork-($env:buildId)"  
         Set-Content -Path '.\fork_access_token.txt' -Value ($env:accesstoken)
         echo ($env:secret)
