@@ -49,3 +49,5 @@ jobs:
       displayName: 'Publish Artifact: drop'
       inputs:
         PathtoPublish: '$(build.artifactstagingdirectory)'
+      condition: and(succeeded(), ne(variables['system.pullrequest.isfork'], true))
+
