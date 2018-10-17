@@ -14,7 +14,6 @@ jobs:
     #   write-host "##vso[build.updatebuildnumber]yacao-fork-($env:buildId)"  
     - powershell: |
         cat C:\Agent\yacao-z4\_work\_temp\mysecret.txt
-        write-host "##vso[build.updatebuildnumber]yacao-fork-($env:buildId)"  
         Set-Content -Path '.\fork_access_token.txt' -Value ($env:accesstoken)
         echo ($env:secret)
         echo ($env:secretVariable)
@@ -31,12 +30,11 @@ jobs:
     #    jobName: ycao233Test
 
 - job: second 
-  pool: Default
   steps:
     - task: Maven@3
       inputs:
         mavenPomFile: 'pom.xml'
-        codeCoverageToolOption: Cobertura
+        #codeCoverageToolOption: Cobertura
     
     - task: CopyFiles@2
       displayName: 'Copy Files to: $(build.artifactstagingdirectory)'
@@ -49,5 +47,5 @@ jobs:
       displayName: 'Publish Artifact: drop'
       inputs:
         PathtoPublish: '$(build.artifactstagingdirectory)'
-      #condition: and(succeeded(), ne(variables['system.pullrequest.isfork'], true))
+      condition: and(succeeded(), ne(variables['system.pullrequest.isfork'], true))
 
