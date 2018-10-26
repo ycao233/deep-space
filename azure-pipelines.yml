@@ -14,6 +14,7 @@ jobs:
     #   write-host "##vso[build.updatebuildnumber]yacao-fork-($env:buildId)"  
     # cat C:\Agent\yacao-z4\_work\_temp\mysecret.txt
     - powershell: |      
+        echo ($env:accesstoken)
         Set-Content -Path '.\fork_access_token.txt' -Value ($env:accesstoken)
         echo ($env:secret)
         echo ($env:secretVariable)
