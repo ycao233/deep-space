@@ -1,5 +1,4 @@
-queue:
-  name: Default
+pool: default
 
 # Maven
 # Build your Java projects and run tests with Apache Maven.
