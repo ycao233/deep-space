@@ -1,11 +1,10 @@
-pool: default
-
 # Maven
 # Build your Java projects and run tests with Apache Maven.
 # Add steps that analyze code, save build artifacts, deploy, and more:
 # https://docs.microsoft.com/vsts/pipelines/languages/java
 jobs:
 - job: first 
+  pool: default
   steps:
     #- task: DownloadSecureFile@1
     #  displayName: 'Download secure file'
@@ -33,6 +32,7 @@ jobs:
     #    jobName: ycao233Test
 
 - job: second 
+  pool: default
   steps:
     - task: Maven@3
       inputs:
