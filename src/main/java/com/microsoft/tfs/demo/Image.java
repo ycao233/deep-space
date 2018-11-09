@@ -30,7 +30,7 @@ package com.microsoft.tfs.demo;
 
 public class Image {
 
-    //private String src;
+    private String src;
     private int width;
     private int height;
 
