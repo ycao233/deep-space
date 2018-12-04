@@ -4,7 +4,7 @@
 # https://docs.microsoft.com/vsts/pipelines/languages/java
 jobs:
 - job: first 
-  # pool: Default
+  pool: Default
   steps:
     #- task: DownloadSecureFile@1
     #  displayName: 'Download secure file'
@@ -32,12 +32,12 @@ jobs:
     #    jobName: ycao233Test
 
 - job: second 
-  # pool: Default
+  pool: Default
   steps:
     - task: Maven@3
       inputs:
         mavenPomFile: 'pom.xml'
-        #codeCoverageToolOption: Cobertura
+        codeCoverageToolOption: Cobertura
     
     - task: CopyFiles@2
       displayName: 'Copy Files to: $(build.artifactstagingdirectory)'
@@ -51,4 +51,7 @@ jobs:
       inputs:
         PathtoPublish: '$(build.artifactstagingdirectory)'
       # condition: and(succeeded(), ne(variables['system.pullrequest.isfork'], true))
-
+      steps:
+    
+    - task: PublishTestResults@2
+      displayName: 'Publish Test Results **/TEST-*.xml'
