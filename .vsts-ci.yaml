@@ -7,3 +7,14 @@ steps:
 - task: Maven@1
   inputs:
     goals: "clean test"
+
+#- task: JenkinsDownloadArtifacts@1
+#  displayName: Download artifacts produced by test
+#  inputs:
+#    jenkinsServerConnection: mytestjenkins
+#    jobName: test
+    
+- powershell: |
+   # Write your powershell commands here.  
+   Write-Host $(mysecret)
+

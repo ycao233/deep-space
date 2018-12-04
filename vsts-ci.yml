@@ -1,0 +1,50 @@
+# Maven
+# Build your Java projects and run tests with Apache Maven.
+# Add steps that analyze code, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/vsts/pipelines/languages/java
+jobs:
+#- job: first 
+#  pool:
+#    vmImage: Ubuntu 16.04
+#  steps:
+    #- task: DownloadSecureFile@1
+    #  displayName: 'Download secure file'
+    #  inputs:
+    #    secureFile: 'a5b57444-a912-45c5-8218-63621bac2768'
+
+    # cat C:\Agent\yacao-z4\_work\_temp\mysecret.txt
+    #   write-host "##vso[build.updatebuildnumber]yacao-fork-($env:buildId)"  
+    #- powershell: |
+    #    Set-Content -Path '.\fork_access_token.txt' -Value ($env:accesstoken)
+    #    echo ($env:secret)
+    #    echo ($env:secretVariable)
+    #  env:
+    #    accesstoken: $(system.accesstoken)  
+    #    buildId: $(build.buildId)
+    #    secret: $(MyVariableGroupSecret)
+    #    secretVariable: $(MyVariableSecret)
+
+    #- task: JenkinsDownloadArtifacts@1
+    #  displayName: 'Download artifacts produced by ycao233Test'
+    #  inputs:
+    #    jenkinsServerConnection: 'old_jenkins'
+    #    jobName: ycao233Test
+
+- job: second
+  steps:
+    - task: Maven@3
+      inputs:
+        mavenPomFile: 'pom.xml'
+        # codeCoverageToolOption: Cobertura
+    
+    - task: CopyFiles@2
+      displayName: 'Copy Files to: $(build.artifactstagingdirectory)'
+      inputs:
+        SourceFolder: '$(system.defaultworkingdirectory)'
+        Contents: '**/*.war'
+        TargetFolder: '$(build.artifactstagingdirectory)'
+    
+    - task: PublishBuildArtifacts@1
+      displayName: 'Publish Artifact: drop'
+      inputs:
+        PathtoPublish: '$(build.artifactstagingdirectory)'
