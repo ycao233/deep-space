@@ -37,7 +37,8 @@ jobs:
     - task: Maven@3
       inputs:
         mavenPomFile: 'pom.xml'
-        codeCoverageToolOption: Cobertura
+        publishJUnitResults: false
+        #codeCoverageToolOption: Cobertura
     
     - task: CopyFiles@2
       displayName: 'Copy Files to: $(build.artifactstagingdirectory)'
