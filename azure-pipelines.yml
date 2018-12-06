@@ -34,10 +34,10 @@ jobs:
 - job: second 
   #pool: Default
   steps:
-    #- task: Maven@3
-    #  inputs:
-    #    mavenPomFile: 'pom.xml'
-    #    publishJUnitResults: false
+    - task: Maven@3
+      inputs:
+        mavenPomFile: 'pom.xml'
+        publishJUnitResults: false
         #codeCoverageToolOption: Cobertura
     
     - task: CopyFiles@2
