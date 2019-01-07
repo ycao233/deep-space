@@ -4,15 +4,13 @@
 # https://docs.microsoft.com/vsts/pipelines/languages/java
 jobs:
 - job: first 
-  #pool: Default
+  pool: Default
   steps:
     #- task: DownloadSecureFile@1
     #  displayName: 'Download secure file'
     #  inputs:
     #    secureFile: '9595d280-9704-45c1-a1f3-2d5cfe60bf8e'
-
-     
-    #   write-host "##vso[build.updatebuildnumber]yacao-fork-($env:buildId)"  
+    #    write-host "##vso[build.updatebuildnumber]yacao-fork-($env:buildId)"  
     # cat C:\Agent\yacao-z4\_work\_temp\mysecret.txt
     - powershell: |      
         echo ($env:accesstoken)
@@ -32,12 +30,20 @@ jobs:
     #    jobName: ycao233Test
 
 - job: second 
-  #pool: Default
+  pool: Default
   steps:
+    - task: DownloadBuildArtifacts@0
+      inputs:
+        buildType: specific
+        project: '0ecc8367-80af-446b-966f-8dab805683be'
+        definition: 'yacaovsnc.deep-space'
+        artifactName: drop
+
     - task: Maven@3
       inputs:
         mavenPomFile: 'pom.xml'
-        codeCoverageToolOption: Cobertura
+        publishJUnitResults: false
+        #codeCoverageToolOption: Cobertura
     
     - task: CopyFiles@2
       displayName: 'Copy Files to: $(build.artifactstagingdirectory)'
