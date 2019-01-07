@@ -6,13 +6,18 @@ jobs:
 - job: first 
   pool: Default
   steps:
+  - task: DownloadBuildArtifacts@0
+    displayName: 'Download Build Artifacts'
+    inputs:
+      buildType: specific
+      project: '0ecc8367-80af-446b-966f-8dab805683be'
+      pipeline: 'yacaovsnc.deep-space'
+      artifactName: drop
     #- task: DownloadSecureFile@1
     #  displayName: 'Download secure file'
     #  inputs:
     #    secureFile: '9595d280-9704-45c1-a1f3-2d5cfe60bf8e'
-
-     
-    #   write-host "##vso[build.updatebuildnumber]yacao-fork-($env:buildId)"  
+    #    write-host "##vso[build.updatebuildnumber]yacao-fork-($env:buildId)"  
     # cat C:\Agent\yacao-z4\_work\_temp\mysecret.txt
     - powershell: |      
         echo ($env:accesstoken)
