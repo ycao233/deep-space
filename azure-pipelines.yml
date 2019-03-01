@@ -5,7 +5,7 @@
 
 jobs:
 - job: first 
-  pool: Default
+  pool: Default_2
   steps:
     #- task: DownloadSecureFile@1
     #  displayName: 'Download secure file'
